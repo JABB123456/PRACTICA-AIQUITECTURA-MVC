@@ -1,6 +1,8 @@
 :root {
   --color-ingreso: #1e8e5a;
   --color-gasto: #c0392b;
+  --color-principal: #d7263d;
+  --color-principal-oscuro: #7a1220;
   --color-fondo: #f5f6f8;
   --color-borde: #dcdfe4;
   color-scheme: light;
@@ -16,7 +18,7 @@ body {
 }
 
 header {
-  background: #20242c;
+  background: var(--color-principal-oscuro);
   padding: 1rem 2rem;
 }
 
@@ -53,7 +55,7 @@ main {
 
 .boton, button {
   display: inline-block;
-  background: #2d6cdf;
+  background: var(--color-principal);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -85,9 +87,13 @@ th, td {
   align-items: center;
 }
 
+.acciones a {
+  color: var(--color-principal);
+}
+
 .acciones form { display: inline; }
 .acciones button {
-  background: var(--color-gasto);
+  background: var(--color-principal-oscuro);
   padding: 0.3rem 0.6rem;
 }
 
@@ -120,6 +126,10 @@ th, td {
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.acciones-formulario a {
+  color: var(--color-principal);
 }
 
 .flashes {
