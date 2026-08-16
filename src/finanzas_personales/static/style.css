@@ -47,7 +47,7 @@ footer {
 
 footer p {
   margin: 0;
-  color: var(--color-principal-oscuro);
+  color: #1a2b4c;
   font-weight: 600;
   font-style: italic;
 }
