@@ -1,0 +1,138 @@
+:root {
+  --color-ingreso: #1e8e5a;
+  --color-gasto: #c0392b;
+  --color-fondo: #f5f6f8;
+  --color-borde: #dcdfe4;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--color-fondo);
+  color: #222;
+}
+
+header {
+  background: #20242c;
+  padding: 1rem 2rem;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.resumen {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tarjeta {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tarjeta.ingreso strong { color: var(--color-ingreso); }
+.tarjeta.gasto strong { color: var(--color-gasto); }
+
+.boton, button {
+  display: inline-block;
+  background: #2d6cdf;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #fff;
+}
+
+th, td {
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--color-borde);
+  text-align: left;
+}
+
+.fila-ingreso td:nth-child(4) { color: var(--color-ingreso); }
+.fila-gasto td:nth-child(4) { color: var(--color-gasto); }
+
+.acciones {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.acciones form { display: inline; }
+.acciones button {
+  background: var(--color-gasto);
+  padding: 0.3rem 0.6rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-borde);
+}
+
+.formulario label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.formulario input, .formulario select {
+  padding: 0.5rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.acciones-formulario {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.flashes {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.flash {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.flash-exito { background: #d7f5e6; color: var(--color-ingreso); }
+.flash-error { background: #fbe1de; color: var(--color-gasto); }
