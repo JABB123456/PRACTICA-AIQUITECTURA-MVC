@@ -24,7 +24,15 @@
     </label>
     <label>
       Categoría
-      <input type="text" name="categoria" value="{{ movimiento.categoria if movimiento else '' }}" required>
+      <select name="categoria" required>
+        <option value="">-- Selecciona --</option>
+        {% for c in categorias %}
+          <option value="{{ c }}" {% if movimiento and movimiento.categoria == c %}selected{% endif %}>{{ c|capitalize }}</option>
+        {% endfor %}
+        {% if movimiento and movimiento.categoria and movimiento.categoria not in categorias %}
+          <option value="{{ movimiento.categoria }}" selected>{{ movimiento.categoria|capitalize }}</option>
+        {% endif %}
+      </select>
     </label>
     <label>
       Fecha
