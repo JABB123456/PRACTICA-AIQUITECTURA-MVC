@@ -157,6 +157,10 @@ ENV/
 env.bak/
 venv.bak/
 
+# Datos de la app (persistencia en archivo, no versionados)
+data/*.json
+!data/.gitkeep
+
 # Spyder project settings
 .spyderproject
 .spyproject

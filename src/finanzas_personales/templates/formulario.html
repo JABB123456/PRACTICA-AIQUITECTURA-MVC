@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ "Editar" if movimiento and movimiento.id else "Nuevo" }} movimiento{% endblock %}
+
+{% block contenido %}
+  <h2>{{ "Editar" if movimiento and movimiento.id else "Nuevo" }} movimiento</h2>
+  <form method="post" class="formulario">
+    <label>
+      Descripción
+      <input type="text" name="descripcion" value="{{ movimiento.descripcion if movimiento else '' }}" required>
+    </label>
+    <label>
+      Monto
+      <input type="number" step="0.01" min="0.01" name="monto" value="{{ movimiento.monto if movimiento else '' }}" required>
+    </label>
+    <label>
+      Tipo
+      <select name="tipo" required>
+        <option value="">-- Selecciona --</option>
+        {% for t in tipos %}
+          <option value="{{ t }}" {% if movimiento and movimiento.tipo == t %}selected{% endif %}>{{ t }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>
+      Categoría
+      <input type="text" name="categoria" value="{{ movimiento.categoria if movimiento else '' }}" required>
+    </label>
+    <label>
+      Fecha
+      <input type="date" name="fecha" value="{{ movimiento.fecha if movimiento else '' }}">
+    </label>
+    <div class="acciones-formulario">
+      <button type="submit">Guardar</button>
+      <a href="{{ url_for('movimientos.index') }}">Cancelar</a>
+    </div>
+  </form>
+{% endblock %}
