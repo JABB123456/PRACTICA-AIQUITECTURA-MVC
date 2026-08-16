@@ -1,7 +1,7 @@
 from flask import Blueprint, current_app, flash, redirect, render_template, request, url_for
 
 from ..controllers.movimiento_controller import ValidacionError
-from ..models.movimiento import TIPOS_VALIDOS
+from ..models.movimiento import CATEGORIAS_SUGERIDAS, TIPOS_VALIDOS
 
 bp = Blueprint("movimientos", __name__)
 
@@ -19,7 +19,9 @@ def index():
 
 @bp.get("/movimientos/nuevo")
 def nuevo():
-    return render_template("formulario.html", movimiento=None, tipos=TIPOS_VALIDOS)
+    return render_template(
+        "formulario.html", movimiento=None, tipos=TIPOS_VALIDOS, categorias=CATEGORIAS_SUGERIDAS
+    )
 
 
 @bp.post("/movimientos/nuevo")
@@ -30,7 +32,9 @@ def crear():
         return redirect(url_for("movimientos.index"))
     except ValidacionError as e:
         flash(str(e), "error")
-        return render_template("formulario.html", movimiento=request.form, tipos=TIPOS_VALIDOS), 400
+        return render_template(
+            "formulario.html", movimiento=request.form, tipos=TIPOS_VALIDOS, categorias=CATEGORIAS_SUGERIDAS
+        ), 400
 
 
 @bp.get("/movimientos/<movimiento_id>/editar")
@@ -39,7 +43,9 @@ def editar(movimiento_id):
     if movimiento is None:
         flash("El movimiento no existe.", "error")
         return redirect(url_for("movimientos.index"))
-    return render_template("formulario.html", movimiento=movimiento, tipos=TIPOS_VALIDOS)
+    return render_template(
+        "formulario.html", movimiento=movimiento, tipos=TIPOS_VALIDOS, categorias=CATEGORIAS_SUGERIDAS
+    )
 
 
 @bp.post("/movimientos/<movimiento_id>/editar")
@@ -50,7 +56,9 @@ def actualizar(movimiento_id):
         return redirect(url_for("movimientos.index"))
     except ValidacionError as e:
         flash(str(e), "error")
-        return render_template("formulario.html", movimiento=request.form, tipos=TIPOS_VALIDOS), 400
+        return render_template(
+            "formulario.html", movimiento=request.form, tipos=TIPOS_VALIDOS, categorias=CATEGORIAS_SUGERIDAS
+        ), 400
 
 
 @bp.post("/movimientos/<movimiento_id>/eliminar")

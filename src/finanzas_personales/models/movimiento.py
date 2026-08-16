@@ -2,6 +2,18 @@ from dataclasses import dataclass, asdict
 
 TIPOS_VALIDOS = ("ingreso", "gasto")
 
+CATEGORIAS_SUGERIDAS = (
+    "trabajo",
+    "inversiones pasivas",
+    "vivienda",
+    "comida",
+    "transporte",
+    "salud",
+    "entretenimiento",
+    "ahorro",
+    "otros",
+)
+
 
 @dataclass
 class Movimiento:
